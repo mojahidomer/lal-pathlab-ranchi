@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 export interface IBloodTest {
   id: string;
@@ -29,8 +29,8 @@ export interface IAppointmentDetails {
   specialInstructions: string;
 }
 
-export interface IAppointment extends Document {
-  _id: string;
+export interface IAppointment  {
+  _id?: string;
   confirmationNumber: string;
   status: 'scheduled' | 'confirmed' | 'in-progress' | 'completed' | 'cancelled' | 'no-show';
   userDetails: IUserDetails;
@@ -45,7 +45,7 @@ export interface IAppointment extends Document {
   updatedAt: Date;
 }
 
-const BloodTestSchema = new Schema<IBloodTest>({
+const BloodTestSchema = new Schema({
   id: { type: String, required: true },
   name: { type: String, required: true },
   description: { type: String, required: true },
@@ -55,7 +55,7 @@ const BloodTestSchema = new Schema<IBloodTest>({
   discount:{ type: Number, default: 0, min: 0, max: 100}
 }, { _id: false });
 
-const UserDetailsSchema = new Schema<IUserDetails>({
+const UserDetailsSchema = new Schema({
   firstName: { type: String, required: true, trim: true },
   lastName: { type: String, required: true, trim: true },
   email: { type: String, required: true, lowercase: true, trim: true },
@@ -67,14 +67,14 @@ const UserDetailsSchema = new Schema<IUserDetails>({
   medicalHistory: { type: String, trim: true }
 }, { _id: false });
 
-const AppointmentDetailsSchema = new Schema<IAppointmentDetails>({
+const AppointmentDetailsSchema = new Schema({
   date: { type: String, required: true },
   time: { type: String, required: true },
   location: { type: String, required: true, enum: ['downtown', 'westside', 'northpoint', 'southbay'] },
   specialInstructions: { type: String, trim: true }
 }, { _id: false });
 
-const AppointmentSchema = new Schema<IAppointment>({
+const AppointmentSchema = new Schema({
   confirmationNumber: {
     type: String,
     required: true,
@@ -133,7 +133,7 @@ const AppointmentSchema = new Schema<IAppointment>({
 AppointmentSchema.set('toJSON', {
   virtuals: true,
   versionKey: false,
-  transform: (_, ret) => {
+  transform: (_, ret: any) => {
     ret.id = ret._id; // just add id
     // don't delete _id
   }
