@@ -1,8 +1,6 @@
-'use client';
 
 import { Inter } from 'next/font/google';
-import { Provider } from 'react-redux';
-import { store } from '@/store/store';
+import {Providers} from "../redux/Providers";
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -19,9 +17,9 @@ export default function RootLayout({
         <meta name="description" content="Trusted diagnostic services with advanced testing facilities. Book your health checkups online." />
       </head>
       <body className={inter.className}>
-        <Provider store={store}>
+      <Providers >
           {children}
-        </Provider>
+        </Providers>
       </body>
     </html>
   );

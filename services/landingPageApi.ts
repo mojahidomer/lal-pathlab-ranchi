@@ -1,7 +1,7 @@
 
 import baseApi from '@/redux/baseApi';
 
-import { ContactFormData } from '@/components/ContactDialog';
+import { ContactFormData } from '../ContactDialog/index';
 
 
 export const landingPageAPI = baseApi.injectEndpoints({

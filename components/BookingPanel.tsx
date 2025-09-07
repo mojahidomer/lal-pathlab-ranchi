@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Search, Upload, Download, MapPin } from 'lucide-react';
 import { useDebounce } from '@/hooks/useDebounce';
 
-export default function BookingPanel() {
+export default function BookingPanel({setIsDialogOpen}: {setIsDialogOpen: (open: boolean) => void}) {
   const [searchTerm, setSearchTerm] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(-1); // for keyboard navigation
@@ -129,7 +129,7 @@ export default function BookingPanel() {
           </svg>
         </div>
       </button>
-      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 px-4 rounded-md font-medium mb-6 transition-colors duration-200 flex items-center justify-between">
+      <button onClick={()=>setIsDialogOpen(true)} className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 px-4 rounded-md font-medium mb-6 transition-colors duration-200 flex items-center justify-between">
         <span>Book an Immediate appointment </span>
         <div className="bg-yellow-400 rounded-full p-1">
           <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
