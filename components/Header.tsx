@@ -1,5 +1,5 @@
 'use client';
-
+import Image from "next/image";
 import { useState } from 'react';
 import { 
   Phone, 
@@ -21,7 +21,16 @@ export default function Header() {
       <div className="bg-blue-800 text-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-2 text-sm">
-            <div className="text-orange-500 font-bold text-lg">Dr Lal PathLabs Ranchi</div>
+            {/* <div className="text-orange-500 font-bold text-lg">Dr Lal PathLabs Ranchi</div> */}
+            <div className="flex items-center">
+            <Image
+              src="/lal2.png" // place your logo in the public/ folder
+              alt="Dr Lal PathLabs Logo"
+              width={150}     // adjust width as per your design
+              height={40}
+              priority
+            />
+          </div>
             <div className="hidden md:flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-yellow-400" />

@@ -1,7 +1,5 @@
 'use client';
 
-import { Provider } from "react-redux";
-import { store } from "../store/store";
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Carousel from '@/components/Carousel';

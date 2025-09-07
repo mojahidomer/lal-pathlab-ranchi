@@ -15,6 +15,8 @@ export default function RootLayout({
       <head>
         <title>Dr Lal PathLabs - Leading Diagnostic Laboratory</title>
         <meta name="description" content="Trusted diagnostic services with advanced testing facilities. Book your health checkups online." />
+        <link rel="icon" href="/logo.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body className={inter.className}>
       <Providers >
