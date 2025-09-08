@@ -21,7 +21,8 @@ export default function HomePage() {
           <div className="lg:col-span-2">
             {/* Carousel section */}
             <Carousel />
-
+            <ContactDialog isOpen={isDialogOpen}
+              onClose={() => setIsDialogOpen(false)} />
 
             {/* Service cards */}
             <ServiceCards />
@@ -42,8 +43,7 @@ export default function HomePage() {
       </main>
 
       <Footer />
-      <ContactDialog isOpen={isDialogOpen}
-              onClose={() => setIsDialogOpen(false)} />
+    
     </div>
   );
 }

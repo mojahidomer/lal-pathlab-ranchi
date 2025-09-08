@@ -34,11 +34,11 @@ export default function Header() {
             <div className="hidden md:flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-yellow-400" />
-                <span>+91-11-4567-8900</span>
+                <span>+918051064146</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-yellow-400" />
-                <span>support@drlalpathlabs.com</span>
+                <span>hodabazmul150@gmail.com</span>
               </div>
             </div>
           </div>
@@ -58,9 +58,9 @@ export default function Header() {
             </button>
 
             {/* Logo - visible on mobile */}
-            <div className="md:hidden text-orange-500 font-bold text-xl">
+            {/* <div className="md:hidden text-orange-500 font-bold text-xl">
               Dr Lal PathLabs
-            </div>
+            </div> */}
 
             {/* Navigation items - left aligned */}
             <nav className="hidden md:flex items-center space-x-8">

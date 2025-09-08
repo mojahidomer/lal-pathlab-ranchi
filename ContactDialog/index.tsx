@@ -69,7 +69,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto bg-white rounded-lg shadow-lg">
+      <DialogContent className="sm:max-w-md w-[95%] max-h-[100dvh] overflow-y-auto bg-white rounded-lg shadow-lg">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-2xl">
             <MessageSquare className="w-6 h-6 text-blue-600" />
@@ -88,7 +88,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
                 id="name"
                 {...register("name")}
                 placeholder="Enter your full name"
-                className="h-11"
+                className="h-11 w-full rounded-md border border-gray-300 bg-white text-black placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
               />
               {errors.name && (
                 <p className="text-sm text-red-600">{errors.name.message}</p>
@@ -106,7 +106,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
                 type="tel"
                 {...register("phoneNumber")}
                 placeholder="+1234567890"
-                className="h-11"
+                className="h-11 w-full rounded-md border border-gray-300 bg-white text-black placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
               />
               {errors.phoneNumber && (
                 <p className="text-sm text-red-600">{errors.phoneNumber.message}</p>
@@ -122,7 +122,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
                 id="message"
                 {...register("message")}
                 placeholder="Tell us about your project or requirements..."
-                className="min-h-[100px]"
+                className="min-h-[100px] w-full rounded-md border border-gray-300 bg-white text-black placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
               />
               {errors.message && (
                 <p className="text-sm text-red-600">{errors.message.message}</p>
