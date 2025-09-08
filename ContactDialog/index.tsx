@@ -116,12 +116,12 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
             <div className="space-y-2">
               <Label htmlFor="message" className="text-sm font-medium flex items-center gap-2">
                 <MessageSquare className="w-4 h-4" />
-                Message
+                Message or Details
               </Label>
               <Textarea
                 id="message"
                 {...register("message")}
-                placeholder="Tell us about your project or requirements..."
+                placeholder="Enter your details"
                 className="min-h-[100px] w-full rounded-md border border-gray-300 bg-white text-black placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
               />
               {errors.message && (
