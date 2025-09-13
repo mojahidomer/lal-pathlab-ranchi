@@ -15,7 +15,9 @@ import { Loader2, Mail, User, MessageSquare, Phone } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
-  phoneNumber: z.string().min(10, "Please enter a valid phone number with country code (e.g., +1234567890)"),
+  phoneNumber: z.string().regex(/^[6-9]\d{9}$/, {
+    message: "Phone number must be 10 digits and start with 6–9",
+  }),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
@@ -39,6 +41,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
     formState: { errors },
   } = useForm<ContactFormData>({
     resolver: zodResolver(formSchema),
+    mode: "onBlur", // 👈 try this
   });
 
   console.log("Form Errors:", errors);
@@ -99,15 +102,24 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
             <div className="space-y-2">
               <Label htmlFor="phoneNumber" className="text-sm font-medium flex items-center gap-2">
                 <Phone className="w-4 h-4" />
-                Phone Number (with country code)
+                Phone Number 
               </Label>
               <Input
                 id="phoneNumber"
-                type="tel"
-                {...register("phoneNumber")}
-                placeholder="+1234567890"
+                type="number"
+                {...register("phoneNumber",
+                  {
+                    required: "Phone number is required",
+                    pattern: {
+                      value: /^[0-9]{10}$/, // 10 digit number (India example)
+                      message: "Invalid phone number",
+                    },
+                  }
+                )}
+                placeholder="Phone number"
                 className="h-11 w-full rounded-md border border-gray-300 bg-white text-black placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
               />
+            
               {errors.phoneNumber && (
                 <p className="text-sm text-red-600">{errors.phoneNumber.message}</p>
               )}

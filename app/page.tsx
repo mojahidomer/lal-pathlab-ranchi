@@ -7,7 +7,7 @@ import BookingPanel from '@/components/BookingPanel';
 import ServiceCards from '@/components/ServiceCards';
 import PopularTestsCarousel from '@/components/PopularTestsCarousel';
 import Footer from '@/components/Footer';
-import { ContactDialog } from '@/ContactDialog';
+import { ContactDialog } from '@/components/ContactDialog';
 
 export default function HomePage() {
   const [isDialogOpen, setIsDialogOpen] = useState(true);
