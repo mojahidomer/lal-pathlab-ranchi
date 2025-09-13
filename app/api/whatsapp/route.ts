@@ -2,6 +2,8 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import twilio from "twilio";
+import Customer from '@/dbModels/appointments/basicDetails';
+import connectDB from '@/dbConfig/db';
 // export const dynamic = "force-dynamic";
 // export const runtime = "nodejs";
 
@@ -12,6 +14,7 @@ const client = twilio(accountSid, authToken);
 
 export async function POST(request: NextRequest) {
     try {
+        await connectDB()
         const { name, message, phoneNumber } = await request.json();
       
         // Validate required fields
@@ -21,6 +24,13 @@ export async function POST(request: NextRequest) {
                 { status: 400 }
             );
         }
+        const customer = new Customer({
+            fullName:name,
+            phoneNumber,
+            details:message,
+          });
+      
+          await customer.save();
         // return NextResponse.json({ name, message, phoneNumber });
 
         // Format the WhatsApp message
